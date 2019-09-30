@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Índices Apurados{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h6>
+    <p>Ano Base:{{teste.anobase}}</p>
+    <p>Ano Exercício: {{teste.anoexer}}</p>
+    <p>Aplicação: {{teste.aplicaan}}</p>
+    <p>Apresentação:{{teste.relatorio}}</p>
+    <p>IVA anterior:{{teste.valivaant}}</p>
+    <p>IVA atual:{{teste.valivaatu}}</p>
+    <p>IVA médio:{{teste.valivamed}}</p>
+    <p>IVA 75%:{{teste.valiva75}}</p>
+    <p>UCTI:{{teste.ucti}}</p>
+    <p>Tributação própria:{{teste.tribprop}}</p>
+    <p>População:{{teste.populacao}}</p>
+    <p>Área:{{teste.area}}</p>
+    <p>Coeficiênte social:{{teste.coefics}}</p>
+    <p>Índice final:{{teste.indicef}}</p> 
+    </h6>
+</div>
+{% endblock %}

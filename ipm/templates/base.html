@@ -1,0 +1,114 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Shepherd</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         Bíblia
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/ipm/listval/">Bíblia Sagrada</a>
+                          <a class="dropdown-item" href="/ipm/valadic/">Estudos Bíblicos</a>
+                          <a class="dropdown-item" href="/ipm/indice/">Pregrador</a>
+                          <a class="dropdown-item" href="/ipm/varindi/">Escola Bíblica</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Administrativo
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/ipm/cnae/">Estoque</a>
+                          <a class="dropdown-item" href="/ipm/apivar/">Membros</a>
+                          <a class="dropdown-item" href="/ipm/apical/"></a>
+                          <a class="dropdown-item" href="/ipm/apiadi/"></a>
+                          <a class="dropdown-item" href="/ipm/apiind/"></a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Financeiro
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/print/varindi/"target="_blank">Contas a pagar  </a>
+                          <a class="dropdown-item" href="/print/relind/"target="_blank">Dízimos </a>
+                          <a class="dropdown-item" href="/print/reladic/"target="_blank">Ofertas</a>
+                          <a class="dropdown-item" href="/print/relcalc/"target="_blank"></a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Agenda
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="/ipm/indvar/">Agenda</a>
+                              <a class="dropdown-item" href="/ipm/grafind/">Agendamentos</a>
+                              <a class="dropdown-item" href="/ipm/grafvala/">Diário do pastor</a>
+                              <a class="dropdown-item" href="/print/relcalc/"></a>
+                            </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Diversos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/ipm/indvar/">Chat</a>
+                          <a class="dropdown-item" href="/ipm/grafind/">Blog</a>
+                          <a class="dropdown-item" href="/ipm/grafvala/">Diário comunitário</a>
+                          <a class="dropdown-item" href="/print/relcalc/"></a>
+                        </div>
+                </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/accounts/login">Entrar</a>
+                    </li>
+                    {% endif%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/">Admin</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/accounts/logout">Sair</a>
+                    </li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        </nav>
+
+        {% block content %}
+
+        
+        {% endblock %}
+    
+        <footer>
+            <p>Shepherd Systems</p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script src="{% static 'js/scripts.js' %}" ></script>
+</body>
+</html>

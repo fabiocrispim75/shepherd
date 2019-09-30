@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Lista de Valores{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-9 list-div">
+    <h6>Relação dos valores utilizados para o cálculo do índice - ACYPR556</h6>
+    <a href="{% url 'relcal_print' %}" class="btn btn-warning" target="print"><span class="fa fa-print"></span> Imprimir</a>
+    <!--<a id="add-link" href="/ipm/newestado/">
+        <div class="col-2 add-div">
+            <i class="fas fa-plus"></i>Adicionar
+        </div>
+    </a>-->
+    <div class="col-9 search-div">
+        <form method="GET" id="search-form">
+            <input class="form-control" type="text" id="search" name="search" placeholder="Digite o ano para buscar o valor" value="{{ request.GET.search }}">
+            <i class="fas fa-search" id="search-btn"></i>
+        </form>
+    </div>
+    {% if messages %}
+        <!--<ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>-->
+    {% endif %}
+    <ul class="est-list">
+        {% for valor in valores %}
+        <li class="est-item">
+            <span><a href="/ipm/listval/{{valor.id}}">
+                <div class="container">
+                        <div class="row">
+                          <div class="col-sm">
+                                VR ADIC {{valor.anobase}}={{valor.valorant}}
+                          </div>
+                          <div class="col-sm">
+                                VR ADIC {{valor.anoexer}}={{valor.valoratu }}
+                          </div>
+                          <div class="col-sm">
+                                Rec/Própria {{valor.anoapres}}={{valor.recpropria  }}
+                          </div>
+                          <div class="col-sm">
+                                População {{valor.populacao}}
+                          </div>
+                          <div class="col-sm">
+                                Área {{valor.area}}
+                          </div>
+                          <div class="col-sm">
+                                Relatório {{valor.relatorio}}
+                          </div>
+                        </div>
+                      </div></a></span>
+            <!--<a href="/ipm/delestado/{{estado.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
+            <a href="/ipm/editestado/{{estado.id}}"><span><i class="fas fa-edit"></i></span></a>-->
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if valores.has_previous %}
+                <a href="?page={{ valores.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+            
+            {% if valores.paginator.num_pages %}
+            <span class="current">
+                {{ valores.number }} de {{ valores.paginator.num_pages }}
+            </span>
+            {% endif %}
+        
+            {% if valores.has_next %}
+                <a href="?page={{ valores.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

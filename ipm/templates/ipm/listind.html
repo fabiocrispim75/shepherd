@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Valores{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h6>Relação de índices apurados - ACYPR535</h6>
+    <a href="{% url 'relind_print' %}" class="btn btn-warning" target="print"><span class="fa fa-print"></span> Imprimir</a> 
+    <!--<a id="add-link" href="/ipm/newestado/">
+        <div class="col-2 add-div">
+            <i class="fas fa-plus"></i>Adicionar
+        </div>
+    </a>-->
+    <div class="col-9 search-div">
+        <form method="GET" id="search-form">
+            <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome do Município para buscar" value="{{ request.GET.search }}">
+            <i class="fas fa-search" id="search-btn"></i>
+        </form>
+    </div>
+    {% if messages %}
+        <!--<ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>-->
+    {% endif %}
+    <ul class="est-list">
+        {% for indice in indices %}
+        <li class="est-item">
+            <span><a href="/ipm/indice/{{indice.id}}">
+                <div class="container">
+                        <div class="row">
+                          <div class="col-sm">
+                               Tipo: {{indice.relatorio}}
+                          </div>
+                          <div class="col-sm">
+                                Ano Base: {{indice.anobase}}
+                          </div>
+                          <div class="col-sm">
+                                Ano exercício: {{indice.anoexer}}
+                          </div>
+                          <div class="col-sm">
+                                Tipo: {{indice.aplicaan}}
+                          </div>
+                          <div class="col-sm">
+                                Tipo: {{indice.indicef}}
+                          </div>
+                        </div>
+                      </div></a></span>
+            <!--<a href="/ipm/delestado/{{estado.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
+            <a href="/ipm/editestado/{{estado.id}}"><span><i class="fas fa-edit"></i></span></a>-->
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if indices.has_previous %}
+                <a href="?page={{ indices.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+            
+            {% if indices.paginator.num_pages %}
+            <span class="current">
+                {{ indices.number }} de {{ indices.paginator.num_pages }}
+            </span>
+            {% endif %}
+        
+            {% if indices.has_next %}
+                <a href="?page={{ indices.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

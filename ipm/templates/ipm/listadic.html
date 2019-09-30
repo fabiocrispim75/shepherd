@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de valores adicionados{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h6>Relação de valores adicionados - ACYPR600</h6>
+    <a href="{% url 'reladic_print' %}" class="btn btn-warning" target="print"><span class="fa fa-print"></span> Imprimir</a> 
+    <!--<a id="add-link" href="/ipm/newestado/">
+        <div class="col-2 add-div">
+            <i class="fas fa-plus"></i>Adicionar
+        </div>
+    </a>-->
+    <div class="col-9 search-div">
+        <form method="GET" id="search-form">
+            <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome do Valor para buscar" value="{{ request.GET.search }}">
+            <i class="fas fa-search" id="search-btn"></i>
+        </form>
+    </div>
+    {% if messages %}
+        <!--<ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>-->
+    {% endif %}
+    <ul class="est-list">
+        {% for valadic in valadics %}
+        <li class="est-item">
+            <span><a href="/ipm/valadic/{{valadic.id}}">
+                <div class="container">
+                        <div class="row">
+                          <div class="col-sm">
+                                Relatório: {{valadic.relatorio}}
+                          </div>
+                          <div class="col-sm">
+                                Ano base: {{valadic.anobase}}
+                          </div>
+                          <div class="col-sm">
+                                Total: {{valadic.valtot}}
+                          </div>
+                        </div>
+                      </div></a></span>
+            <!--<a href="/ipm/delestado/{{estado.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
+            <a href="/ipm/editestado/{{estado.id}}"><span><i class="fas fa-edit"></i></span></a>-->
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if valadics.has_previous %}
+                <a href="?page={{ valadics.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+            
+            {% if valadics.paginator.num_pages %}
+            <span class="current">
+                {{ valadics.number }} de {{ valadics.paginator.num_pages }}
+            </span>
+            {% endif %}
+        
+            {% if valadics.has_next %}
+                <a href="?page={{ valadics.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Valores Adicionados{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <p>Ano base: {{ adicionar.anobase}}</p>
+    <p>Comércio/Indústrica: {{ adicionar.valcom }}</p>
+    <p>Setor agropecuário: {{ adicionar.valset }}</p>
+    <p>Prestação de servíços: {{ adicionar.valagr }}</p>
+    <p>DAR-1/AUT:{{ adicionar.valdar }}</p>
+    <p>NAI: {{ adicionar.valvai }}</p>
+    <p>CRED EX-OFF: {{ adicionar.valcred }}</p>
+    <p>DEB EX-OFF: {{ adicionar.valdeb }}</p>
+    <p>Total: {{ adicionar.valtot }}</p>
+    <p>Relatório: {{ adicionar.relatorio }}</p>
+</div>
+{% endblock %}

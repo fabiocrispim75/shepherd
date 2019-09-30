@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de valores{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <p>Ano base: {{valor.anobase}}</p>
+    <p>Ano exercício: {{valor.anoexer}}</p>
+    <p>Vigência: {{valor.anoapres}}</p>
+    <p>V.A anterior: {{valor.valorant}}</p>
+    <p>V.A autal: {{valor.valoratu}}</p>
+    <p>Receita própria: {{valor.recpropria}}</p>
+    <p>População: {{valor.populacao}}</p>
+    <p>Área: {{valor.area}}</p>
+    <p>Relatório: {{valor.relatorio}}</p>
+</div>
+{% endblock %}
+

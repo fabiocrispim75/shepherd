@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de variações de índices{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+   <p>Ano atual: {{varicao.anoa}}</p>
+   <p>IPM atual: {{varicao.valanoa}}%</p>
+   <p>Ano anterior: {{varicao.anob}}</p>
+   <p>IPM anterior: {{varicao.valanob}}%</p>
+   <p>Percentual variação: {{varicao.percent}}%</p>
+</div>
+{% endblock %}

@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+{% block scripts %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+            <div style="width: 420px;">
+                    <canvas id="varChart" width="500" height="300">[No canvas support]</canvas>
+                    <script>
+                    var ctx = document.getElementById("varChart");
+                    var nomes = JSON.parse('{{ nomes|safe }}');
+                    var percents = JSON.parse('{{ percents|safe }}');
+                    var varChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: nomes,
+                            datasets: [{
+                                label: 'Variação',
+                                data: percents,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54 162, 235, 0.2)',
+                                    'rgba(100, 206, 86, 0.2)',
+                                    'rgba(100, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255,99,132,1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                            
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script>
+            </div>
+    </div>
+    <div class="col">
+            <div style="width: 420px;">
+                    <canvas id="piechart" width="500" height="300">[No canvas support]</canvas>
+                    <script>
+                            var ctx = document.getElementById("piechart");
+                            var nomes = JSON.parse('{{ nomes|safe }}');
+                            var percents = JSON.parse('{{ percents|safe }}');
+                            var piechart = new Chart(ctx, {
+                                type: 'pie',
+                                data: {
+                                    labels: nomes,
+                                    datasets: [{
+                                        label: 'Variação',
+                                        data: percents,
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(153, 102, 255, 0.2)',
+                                            'rgba(255, 159, 64, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255,99,132,1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                    
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+                            </script>
+                    </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col">
+            <div style="width: 390px;">
+                    <canvas id="horizontalBarchart" width="600" height="300">[No canvas support]</canvas>
+                    <script>
+                            var ctx = document.getElementById("horizontalBarchart");
+                            var nomes = JSON.parse('{{ nomes|safe }}');
+                            var percents = JSON.parse('{{ percents|safe }}');
+                            var horizontalBarchart = new Chart(ctx, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: nomes,
+                                    datasets: [{
+                                        label: 'Variação',
+                                        data: percents,
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(153, 102, 255, 0.2)',
+                                            'rgba(255, 159, 64, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255,99,132,1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                    
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+                    </script>
+            </div>
+    </div>
+    <div class="col">
+            <div style="width: 390px;">
+                    <canvas id="Bubblechart" width="600" height="300">[No canvas support]</canvas>
+                    <script>
+                            var ctx = document.getElementById("Bubblechart");
+                            var nomes = JSON.parse('{{ nomes|safe }}');
+                            var percents = JSON.parse('{{ percents|safe }}');
+                            var Bubblechart = new Chart(ctx, {
+                                type: 'horizontalBar',
+                                data: {
+                                    labels: nomes,
+                                    datasets: [{
+                                        label: 'Variação',
+                                        data: percents,
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(153, 102, 255, 0.2)',
+                                            'rgba(255, 159, 64, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255,99,132,1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                    
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+                            </script>
+                    </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% endblock %}

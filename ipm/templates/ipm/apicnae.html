@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block title %}API CNAE{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+  <h6>CNAE API<h6>
+  <form method="get">
+    <input type="text" name="descricao">
+    <button type="submit">Buscar CNAE</button>
+  </form>
+  {% if user %}
+    <p><strong>{{ user.descricao }}</strong>  </p>
+        
+    <h6><strong>Observações : {{ user.observacoes}}</strong></h6>
+  {% endif %}
+</div>
+{% endblock %}
