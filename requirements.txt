@@ -67,7 +67,7 @@ docker==4.0.2
 docker-pycreds==0.4.0
 docutils==0.14
 easy-thumbnails==2.6
-ecdsa==0.13.2
+ecdsa==0.13.3
 entrypoints==0.3
 et-xmlfile==1.0.1
 fasteners==0.15
